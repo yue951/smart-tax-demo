@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧财税管理智能体</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft Yahei",sans-serif;}
+        body{background:#f4f7fa;color:#333;}
+        .header{background:#2c5c97;color:#fff;padding:16px 30px;font-size:22px;font-weight:bold;}
+        .container{display:flex;min-height:calc(100vh - 62px);}
+        .sidebar{width:200px;background:#fff;border-right:1px solid #e2e8f0;padding:20px 0;}
+        .sidebar a{display:block;padding:12px 24px;color:#444;text-decoration:none;}
+        .sidebar a.active{background:#2c5c97;color:#fff;}
+        .main{flex:1;padding:24px;}
+        .card{background:#fff;padding:20px;border-radius:8px;box-shadow:0 2px 8px #00000012;margin-bottom:20px;}
+        .btn{background:#2c5c97;color:#fff;border:none;padding:8px 16px;border-radius:4px;cursor:pointer;margin:5px;}
+        .alert{background:#fff3cd;border:1px solid #ffeeba;padding:12px;border-radius:6px;margin:10px 0;}
+        table{width:100%;border-collapse:collapse;margin:15px 0;}
+        th,td{border:1px solid #ddd;padding:10px;text-align:left;}
+        th{background:#f1f5f9;}
+        .page{display:none;}
+        .page.active{display:block;}
+    </style>
+</head>
+<body>
+<div class="header">智慧财税管理智能体 | 网页原型演示</div>
+<div class="container">
+    <div class="sidebar">
+        <a href=" " class="nav-item active" onclick="switchPage('enterprise')">企业中心</a >
+        <a href="#upload" class="nav-item" onclick="switchPage('upload')">数据上传</a >
+        <a href="#tax" class="nav-item" onclick="switchPage('tax')">计税申报</a >
+        <a href="#policy" class="nav-item" onclick="switchPage('policy')">政策中心</a >
+        <a href="#risk" class="nav-item" onclick="switchPage('risk')">风险看板</a >
+        <a href="#chat" class="nav-item" onclick="switchPage('chat')">智能问答</a >
+        <a href="#msg" class="nav-item" onclick="switchPage('msg')">消息提醒</a >
+    </div>
+    <div class="main">
+        <!--企业中心-->
+        <div id="enterprise" class="page active">
+            <div class="card">
+                <h2>企业中心｜企业画像</h2>
+                <p style="margin:10px 0;">企业名称：XX商贸有限公司</p >
+                <p>纳税人身份：增值税一般纳税人</p >
+                <p>行业：批发零售业</p >
+                <p>规模：小微企业</p >
+                <p>注册地：陕西省西安市</p >
+                <div class="alert">企业画像已生成，系统将基于该画像自动匹配税收优惠政策</div>
+            </div>
+        </div>
+
+        <!--数据上传-->
+        <div id="upload" class="page">
+            <div class="card">
+                <h2>数据上传模块</h2>
+                <p style="margin:10px 0;">支持：财务台账、发票台账、银行流水（结构化表格）<br>PDF合同、扫描凭证、图片发票（非结构化文件，OCR+NLP抽取）</p >
+                <button class="btn">选择文件上传</button>
+                <button class="btn">批量导入财务数据</button>
+                <div class="alert">✅上传后自动执行：数据清洗、去重、异常校验、业务-会计科目自动关联</div>
+            </div>
+        </div>
+
+        <!--计税申报-->
+        <div id="tax" class="page">
+            <div class="card">
+                <h2>自动计税与多税种模拟申报</h2>
+                <p>支持税种：增值税、企业所得税、附加税费</p >
+                <button class="btn">一键自动计税</button>
+                <button class="btn">生成全套纳税申报表</button>
+                <button class="btn">模拟批量申报</button>
+                <p style="margin:10px 0;">申报表支持在线人工复核调整，PDF下载归档，申报状态查询</p >
+                <table>
+                    <tr><th>税种</th><th>应纳税额</th><th>状态</th></tr>
+                    <tr><td>增值税</td><td>42600.00</td><td>待复核</td></tr>
+                    <tr><td>企业所得税</td><td>18400.00</td><td>待复核</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!--政策中心-->
+        <div id="policy" class="page">
+            <div class="card">
+                <h2>税收优惠政策智能匹配</h2>
+                <div class="alert">
+                    <p>✅可享受：小微企业所得税减免优惠，预估减免金额：32000元</p >
+                    <p>📄留存备查资料：从业人数证明、资产总额报表</p >
+                </div>
+                <div class="alert">
+                    <p>⏳暂不满足：研发费用加计扣除（无研发项目备案）</p >
+                </div>
+                <div class="alert">
+                    <p>🟢已享受：六税两费减半优惠</p >
+                </div>
+            </div>
+        </div>
+
+        <!--风险看板-->
+        <div id="risk" class="page">
+            <div class="card">
+                <h2>涉税风险分析看板</h2>
+                <div class="alert">🔴高风险：进项发票品名与企业经营范围匹配异常，请核对发票</div>
+                <div class="alert">🟡中风险：本期毛利率同比下降幅度较大，建议留存业务说明材料</div>
+                <p>系统基于机器学习识别异常财税指标，知识图谱校验税种勾稽关系，自动生成整改建议报告</p >
+                <button class="btn">下载完整涉税风险报告</button>
+            </div>
+        </div>
+
+        <!--智能问答-->
+        <div id="chat" class="page">
+            <div class="card">
+                <h2>财税智能问答（NLP）</h2>
+                <p>您可以提问税法、申报、优惠政策相关问题</p >
+                <div style="border:1px solid #ddd;padding:12px;height:160px;margin:10px 0;">
+                    <p>用户：小微企业所得税优惠条件是什么？</p >
+                    <p>AI：小微企业需同时满足从业人数、资产总额、应纳税所得额条件，系统会自动根据企业数据判断是否符合。</p >
+                </div>
+<input style="width:80%;padding:8px;" placeholder="输入你的财税问题">
+                 <button class="btn">发送</button>
+             </div>
+         </div>
+         <!--消息提醒-->
+         <div id="msg" class="page">
+             <div class="card">
+                 <h2>站内消息提醒</h2>
+                 <div class="alert">⏰提醒：本月增值税申报截止日期临近，请按期完成申报</div>
+                 <div class="alert">📢政策更新：XX优惠政策修订，已重新评估您企业适配情况</div>
+                 <div class="alert">⚠️风险提醒：检测到进项凭证存在异常，请尽快复核</div>
+             </div>
+         </div>
+     </div>
+ </div>
+ <script>
+     function switchPage(pageId){
+         document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+         document.getElementById(pageId).classList.add('active');
+         document.querySelectorAll('.nav-item').forEach(a=>a.classList.remove('active'));
+     }
+ </script>
+ </body>
+ </html>
